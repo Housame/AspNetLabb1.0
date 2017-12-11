@@ -1,0 +1,2 @@
+2017-12-12 00:13:10.5123||DEBUG|Labb10.Program|init main |url: |action: 
+2017-12-12 00:13:12.2950||INFO|Labb10.Controllers.CustomerController|Getting all customers from database, count: 6 |url: http://localhost/api/customer/|action: GetCustomers
