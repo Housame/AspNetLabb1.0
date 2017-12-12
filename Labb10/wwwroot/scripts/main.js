@@ -65,8 +65,8 @@
     $(document).on('click', '.uppgrade', function () {
         var id = $(this).attr('data-uppgradeId');
         $.ajax({
-            url: '/api/customer/',
-            type: 'Put',
+            url: '/api/customer/edit',
+            type: 'Get',
             data: { 'id': id }
         }).done(function (result) {
             console.log(result);
@@ -107,8 +107,8 @@
     //Upload csv files, resetting data and upload the new data
     uploadCSV.on('click', function () {
         $.ajax({
-            url: '/api/customer/csv',
-            type: 'Get'
+            url: '/api/customer',
+            type: 'Put'
         }).done(function (result) {
             console.log("Success");
             UpdateTable();
@@ -135,8 +135,6 @@
 
     //Output the log data
     logData.on('click', function () {
-        console.log('Inside get log file');
-
         $.ajax({
             url: '/api/customer/log/',
             type: 'GET',
@@ -149,11 +147,10 @@
                 else {
                     $('.modal-body').append('<p style="color:darkturquoise">' + item + '</p>');
                 }
-                //$('.modal-body').append('<p>' + item + '</p>');
             });
         }).fail(function (xhr, status, error) {
-            $('#logfileOutput').empty().html('<p class="lead">' + xhr.responseText + '</p>');
-            console.log('fail at get log file');
+            $('.modal-body').empty().html('<h3 style="color:red">Obs! Something went wrong</h3>');
+            $('.modal-body').append('<p style="color:red">' + xhr.responseText + '</p>');
         });
         //$(".modal-body").append('<h5>Hello World<h5>')
     });

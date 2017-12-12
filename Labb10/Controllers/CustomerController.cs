@@ -36,7 +36,8 @@ namespace Labb10.Controllers
             return Ok(customerList);
             
         }
-        [HttpPut]
+        [HttpGet]
+        [Route("edit")]
         public IActionResult GetCustomerToEdit(int id)
         {
             Customer customerToEdit = databaseContext.Customers.Find(id);
@@ -80,8 +81,7 @@ namespace Labb10.Controllers
             databaseContext.SaveChanges();
             return Ok();
         }
-        [HttpGet]
-        [Route("csv")]
+        [HttpPut]
         public IActionResult UploadCSV()
         {
             databaseContext.Customers.RemoveRange(databaseContext.Customers);
